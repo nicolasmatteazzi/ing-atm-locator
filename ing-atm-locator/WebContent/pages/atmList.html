@@ -1,0 +1,43 @@
+
+<div class="theme-cyan" layout="column" flex>
+
+	<md-toolbar md-whiteframe="3">
+		<div class="md-toolbar-tools">
+			<span class="title" flex>ING ATM</span>
+		</div>
+	</md-toolbar>
+	
+	<md-content style="padding: 24px;">
+	
+		<div class="headline" layout-gt-sm="row" layout="column">
+			<div class="results" flex layout="column">
+				<div flex></div>
+				<div ng-if="atms != null && !searching">{{atms.length}} ATM found</div>
+				<div ng-if="atms == null || searching" flex>Searching...</div>
+			</div>
+			<div class="search-container" layout="row">
+				<div class="input" flex>
+					<input type="text" ng-keydown="$event.keyCode == 13 && searchAtms()" ng-model="searchedCity" flex/>
+				</div>
+				<md-icon md-svg-src="images/magnifying-glass.svg" ng-click="searchAtms()"></md-icon>
+			</div>
+		</div>
+	
+		<div class="atm-list-container" layout="column">
+
+			<md-grid-list md-cols-xs="1" md-cols-sm="3" md-cols-md="4" md-cols-md="5" md-cols-gt-md="6" md-row-height-gt-sm="5:2" md-row-height-sm="2:1" md-row-height="4:1" md-gutter="12px" >
+				<md-grid-tile ng-repeat="atm in atms" ng-class="[gtSm ? 'md-whiteframe-1dp' : '']">
+					<div class="atm-info" layout="column" flex>
+						<div class="city">{{atm.address.city}}</div>
+						<div class="street">{{atm.address.street}}, {{atm.address.housenumber}}</div>
+						<div class="postal">{{atm.address.postalcode}}</div>
+					</div>
+				</md-grid-tile>
+			</md-grid-list>		
+			
+		</div>
+	
+	</md-content>
+	
+</div>
+

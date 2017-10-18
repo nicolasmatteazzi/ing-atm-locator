@@ -1,0 +1,26 @@
+<div class="theme-cyan" layout="column" flex>
+
+	<md-toolbar md-whiteframe="3">
+		<div class="md-toolbar-tools">
+			<span class="title" flex>ING ATM</span>
+		</div>
+	</md-toolbar>
+
+	<md-content style="padding: 24px;" layout="row">
+
+		<div flex></div>
+		<form id="login-form" role="form" ng-submit="login()" layout="column">
+			<div class="item" layout="column">
+				<label for="username">Username</label> 
+				<input type="text" class="form-control" id="username" name="username" ng-model="credentials.username" />
+			</div>
+			<div class="item" layout="column">
+				<label for="password">Password</label> 
+				<input type="password" class="form-control" id="password" name="password" ng-model="credentials.password" />
+			</div>
+			<button type="submit" class="accent-color">Submit</button>
+		</form>
+		<div flex></div>
+
+	</md-content>
+</div>

@@ -1,0 +1,46 @@
+
+.headline {margin-bottom: 18px;}
+.headline .results {font-size: 0.8em; margin-bottom: 3px;}
+.headline .search-container {border: 1px solid #d2cdcd; padding: 6px 12px; border-radius: 3px;}
+.headline .search-container .input {font-size: 1.1em;}
+.headline .search-container .input input[type="text"] {border: none; outline: none; width: 100%;}
+.headline .search-container md-icon {outline: none;}
+
+.atm-list-container {color: rgba(0,0,0,0.8);}
+.atm-list-container .atm-info {padding: 12px;}
+.atm-list-container .atm-info .city {font-size: 1.1em; margin-bottom: 8px;}
+.atm-list-container .atm-info .street {font-size: 0.9em;}
+.atm-list-container .atm-info .postal {font-size: 0.8em;}
+
+md-grid-tile {border-radius: 3px; background: rgba(178, 235, 242, 0.4);}
+
+#login-form {}
+#login-form .item {margin-bottom: 12px;}
+#login-form .item label {color: rgba(0,0,0,0.7); font-size: 0.9em; margin-bottom: 3px;}
+#login-form .item input {border: 1px solid #d2cdcd; padding: 6px 12px; border-radius: 3px;}
+#login-form button {padding: 12px; font-size: 1.2em; color: white; text-transform: uppercase; margin-top: 12px;}
+
+/************************************************************************
+ * THEME
+ ***********************************************************************/
+.dark-primary-color    { background: #0097A7;}
+.default-primary-color { background: #00BCD4;}
+.light-primary-color   { background: #B2EBF2;}
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #8BC34A; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+
+.default-primary-color md-icon { fill: white; }
+.dark-primary-color md-icon { fill: white; }
+
+md-toolbar {background: #0097A7 !important; }
+
+.md-button.md-default-theme.md-raised:not([disabled]) md-icon, .md-button.md-raised:not([disabled]) md-icon {color: white;}
+
+@media only screen and (min-width: 960px) {
+	.headline .results {font-size: 1.3em; margin-bottom: 0;}
+	.atm-list-container .atm-info .city {font-size: 1.2em; margin-bottom: 12px;}
+.atm-list-container .atm-info .street {font-size: 1em;}
+}
