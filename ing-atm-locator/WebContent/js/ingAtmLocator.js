@@ -27,7 +27,6 @@ var ingAtmLocatorModule = angular.module("ingAtmLocator", [ "ngRoute", "ngMateri
 			callback && callback($rootScope.authenticated);
 		})
 		.error(function() {
-			console.log('auth failed');
 			$rootScope.authenticated = false;
 			callback && callback(false);
 		});
@@ -37,21 +36,25 @@ var ingAtmLocatorModule = angular.module("ingAtmLocator", [ "ngRoute", "ngMateri
 	authenticate(null, function() {
 		if ($rootScope.authenticated) {
 			$location.path("/");
-			$scope.error = false;
 		} else {
 			$location.path("/login");
-			$scope.error = true;
 		}
     });
+	
+	$rootScope.logout = function() {
+		$http.post('logout', {}).finally(function() {
+			$rootScope.authenticated = false;
+			$location.path("/login");
+			userCredentials = null;
+		});
+	}
 	
 })
 .controller("loginController", function($scope, $route, $location, $mdMedia, $mdSidenav, $rootScope, $http) {
 
 	var authenticate = function(credentials, callback) {
 		
-		console.log(credentials);
 		userCredentials = credentials;
-		console.log(userCredentials);
 
 		$http.get('api/user').success(function(data) {
 			
@@ -74,10 +77,10 @@ var ingAtmLocatorModule = angular.module("ingAtmLocator", [ "ngRoute", "ngMateri
 		authenticate($scope.credentials, function() {
 			if ($rootScope.authenticated) {
 				$location.path("/");
-				$scope.error = false;
+				$scope.failedAuth = false;
 			} else {
 				$location.path("/login");
-				$scope.error = true;
+				$scope.failedAuth = true;
 			}
 		});
 	};

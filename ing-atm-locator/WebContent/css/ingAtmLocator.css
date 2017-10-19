@@ -15,10 +15,11 @@
 md-grid-tile {border-radius: 3px; background: rgba(178, 235, 242, 0.4);}
 
 #login-form {}
+#login-form .error-message {font-size: 1em; color: red; margin-bottom: 18px;}
 #login-form .item {margin-bottom: 12px;}
 #login-form .item label {color: rgba(0,0,0,0.7); font-size: 0.9em; margin-bottom: 3px;}
-#login-form .item input {border: 1px solid #d2cdcd; padding: 6px 12px; border-radius: 3px;}
-#login-form button {padding: 12px; font-size: 1.2em; color: white; text-transform: uppercase; margin-top: 12px;}
+#login-form .item input {border: 1px solid #d2cdcd; padding: 8px 12px; border-radius: 3px;}
+#login-form button {padding: 12px; font-size: 1.2em; color: white; text-transform: uppercase; margin-top: 12px; border-radius: 3px; border: none;}
 
 /************************************************************************
  * THEME

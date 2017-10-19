@@ -10,6 +10,9 @@
 
 		<div flex></div>
 		<form id="login-form" role="form" ng-submit="login()" layout="column">
+		
+			<div class="error-message" ng-if="failedAuth">Wrong credentials. Please retry.</div>
+		
 			<div class="item" layout="column">
 				<label for="username">Username</label> 
 				<input type="text" class="form-control" id="username" name="username" ng-model="credentials.username" />
@@ -18,7 +21,7 @@
 				<label for="password">Password</label> 
 				<input type="password" class="form-control" id="password" name="password" ng-model="credentials.password" />
 			</div>
-			<button type="submit" class="accent-color">Submit</button>
+			<button type="submit" class="accent-color" md-whiteframe="3">Submit</button>
 		</form>
 		<div flex></div>
 

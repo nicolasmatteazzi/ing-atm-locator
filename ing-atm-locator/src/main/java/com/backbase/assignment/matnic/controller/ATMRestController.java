@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ import com.backbase.assignment.matnic.model.to.GetAtmsResponse;
 
 @RestController
 public class ATMRestController extends AbstractSecurityWebApplicationInitializer {
-	
+
 	public ATMRestController() {
 		super(SecurityConfiguration.class);
 	}
@@ -48,14 +49,18 @@ public class ATMRestController extends AbstractSecurityWebApplicationInitializer
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.httpBasic().and().authorizeRequests().antMatchers("/index.html", "/pages/**", "/js/**", "/css/**", "/").permitAll().anyRequest().authenticated();
+			
+			CookieCsrfTokenRepository tokenRepo = new CookieCsrfTokenRepository();
+			tokenRepo.setCookieHttpOnly(false);
+			
+			http.httpBasic().and().authorizeRequests().antMatchers("/index.html", "/pages/**", "/js/**", "/css/**", "/").permitAll().anyRequest().authenticated().and().csrf().csrfTokenRepository(tokenRepo);
 		}
-		
+
 		@Override
 		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 			auth.inMemoryAuthentication().withUser("frank").password("123").roles("ADMIN");
 		}
-		
+
 	}
 
 }
